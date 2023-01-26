@@ -40,8 +40,9 @@ namespace DigitalLibrary
                 userData = userService.DoValidate(userLogs);
                 if(userData !=null)
                 {
-                    lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
-                    lblMsg.Text = "Login SccessFully.";
+                    //lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
+                    //lblMsg.Text = "Login SccessFully.";
+                    Response.Redirect("Demo.aspx");
                 }
                 else
                 {
