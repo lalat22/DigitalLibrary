@@ -101,15 +101,14 @@
 <body>
     <form id="form1" runat="server">
         <div>
-             <header class="app-header" style="background: #fff; border-bottom: 4px solid #004990;height: 196px;">
+             <header class="app-header" style="background: #fff; border-bottom: 6px solid #004990;">
                 <a class="app-sidebar__toggle" href="#" data-toggle="sidebar"></a>
                <%-- <a href="/">
                     <img src="../Images/Book1.png" alt="logo" style="height: 111px;" /></a>--%>
-                  <img src="../Images/library3.png" style="height: 196px;width: 1542px;"/>
-                 <div  style="margin-top: -24px;margin-left: 1486px;">
-                     <a href="#" class = "tooltip-show" data-toggle = "tooltip" 
-      title = "Logout" ><img  src="../Images/Logout.png"/ style="height: 21px;"></a>
-                    
+                  <img src="../Images/library3.png" style="height: 156px;width: 100%;"/>
+                 <div  style="margin-top: -24px; margin-left:98%;">
+                     <a href="#" class = "tooltip-show" data-toggle = "tooltip" title = "Logout" >
+                         <img  src="../Images/Logout.png"/ style="height: 19px;margin-top: 5px;" /></a>
                  </div>
                  
                
