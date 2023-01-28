@@ -134,11 +134,11 @@
                     <i class="fa fa-code-fork" aria-hidden="true"></i>
                     Add Branch
                 </a>
-                <a href="javascript:void(0)" style="font-size: 20px">
+                <a href="AddBook.aspx" style="font-size: 20px">
                     <i class="fa fa-book fa-fw" aria-hidden="true"></i>
                     Add Book
                 </a>
-                <a href="javascript:void(0)" style="font-size: 20px">
+                <a href="BookReport.aspx" style="font-size: 20px">
                     <i class="fa fa-file" aria-hidden="true"></i>
                     Book Report
                 </a>
