@@ -17,12 +17,12 @@
                 </div>
 
             </div>
-            <asp:Button  ID="btnSave" runat="server" Text="Add Branch" OnClick="btnSave_Click" class="btn btn-primary" style="margin-left: -5px; margin-top: 7px;" />
+            <asp:Button ID="btnSave" runat="server" Text="Add Branch" OnClick="btnSave_Click" class="btn btn-primary" Style="margin-left: -5px; margin-top: 7px;" />
             <%--<button type="submit" class="btn btn-primary" style="margin-left: -5px; margin-top: 7px;">Add Branch</button>--%>
             <asp:Label ID="lblMsg" runat="server"></asp:Label>
-            <div style="margin-left: 495px;margin-top: 41px;">
+            <div style="margin-left: 495px; margin-top: 41px;">
                 <asp:GridView ID="gvBranch" runat="server" AutoGenerateColumns="False" CellPadding="6" OnRowCommand="gvBranch_RowCommand"
-                     OnRowEditing="gvBranch_RowEditing" OnRowDeleting="gvBranch_RowDeleting">
+                    OnRowEditing="gvBranch_RowEditing" OnRowDeleting="gvBranch_RowDeleting">
                     <Columns>
                         <asp:TemplateField HeaderText="Branch Name">
                             <ItemTemplate>
@@ -31,8 +31,8 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Actions">
                             <ItemTemplate>
-                                <asp:LinkButton ID="lnkEdit" runat="server" CommandName="edit" CommandArgument='<%#Eval("BranchId") %>'>Edit</asp:LinkButton>
-                                <asp:LinkButton ID="lnkDelete" runat="server" CommandName="delete" CommandArgument='<%#Eval("BranchId") %>'>Delete</asp:LinkButton>
+                                <asp:LinkButton ID="lnkEdit" runat="server" CommandName="edit" CommandArgument='<%#Eval("BranchId") %>'><span class="fa fa-pencil fa-fw"></asp:LinkButton>
+                                <asp:LinkButton ID="lnkDelete" runat="server" CommandName="delete" CommandArgument='<%#Eval("BranchId") %>'><span class="fa fa-trash-o"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -42,7 +42,7 @@
                 </asp:GridView>
 
             </div>
-            
+
 
         </div>
         <div class="card-footer text-muted">
