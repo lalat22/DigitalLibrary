@@ -11,25 +11,42 @@ namespace DigitalLibrary
 {
     public partial class AddBranch : System.Web.UI.Page
     {
+        public int BranchId
+        {
+            get
+            {
+                return Convert.ToInt32(ViewState["BranchId"]);
+            }
+            set
+            {
+                ViewState["BranchId"] = value;
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 GetAllBranch();
             }
         }
-        
+
         protected void gvBranch_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if(e.CommandName =="edit")
+            if (e.CommandName == "edit")
             {
-                int branchId = Convert.ToInt32(e.CommandArgument);
-                GetBranchById(branchId);
+                BranchId = 0;
+                lblMsg.Text = string.Empty;
+                int intBranchId = Convert.ToInt32(e.CommandArgument);
+                GetBranchById(intBranchId);
+                btnSave.Text = "Update Branch";
+                BranchId = intBranchId;
             }
-            else if(e.CommandName == "delete")
+            else if (e.CommandName == "delete")
             {
-                int branchId = Convert.ToInt32(e.CommandArgument);
-                DeleteBranchById(branchId);
+                lblMsg.Text = string.Empty;
+                int intBranchId = Convert.ToInt32(e.CommandArgument);
+                DeleteBranchById(intBranchId);
+                GetAllBranch();
             }
         }
         private void GetBranchById(int branchId)
@@ -37,7 +54,7 @@ namespace DigitalLibrary
             BranchService branchService = new BranchService();
             BranchModel branchModel = new BranchModel();
             branchModel = branchService.GetBranchById(branchId);
-            if(branchModel!= null)
+            if (branchModel != null)
             {
                 txtBranchName.Text = branchModel.BranchName;
             }
@@ -53,7 +70,7 @@ namespace DigitalLibrary
                 gvBranch.DataSource = lstBranch;
                 gvBranch.DataBind();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -64,8 +81,8 @@ namespace DigitalLibrary
             try
             {
                 BranchService branchService = new BranchService();
-               i =  branchService.InsertBranch(branchName);
-                if(i>0)
+                i = branchService.InsertBranch(branchName);
+                if (i > 0)
                 {
                     lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
                     lblMsg.Text = "Branch Added SuccessFully.";
@@ -76,7 +93,7 @@ namespace DigitalLibrary
                     lblMsg.Text = "Error Occured.";
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -111,8 +128,53 @@ namespace DigitalLibrary
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string str = txtBranchName.Text.Trim();
-            InsertBranch(str);
+
+
+            if (BranchId > 0)
+            {
+                lblMsg.Text = string.Empty;
+                UpdateBranch();
+                btnSave.Text = "Add Branch";
+                txtBranchName.Text = string.Empty;
+                GetAllBranch();
+                BranchId = 0;
+            }
+            else
+            {
+                lblMsg.Text = string.Empty;
+                string str = txtBranchName.Text.Trim();
+                InsertBranch(str);
+                txtBranchName.Text = string.Empty;
+                GetAllBranch();
+            }
+        }
+        private void UpdateBranch()
+        {
+            BranchModel objBranchModel = new BranchModel();
+            BranchService branchService = new BranchService();
+            int i = 0;
+            try
+            {
+                objBranchModel.BranchName = txtBranchName.Text;
+                objBranchModel.BranchId = BranchId;
+
+                i = branchService.UpdateBranch(objBranchModel);
+                if (i > 0)
+                {
+                    lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
+                    lblMsg.Text = "Branch Updated SuccessFully.";
+                }
+                else
+                {
+                    lblMsg.ForeColor = System.Drawing.Color.IndianRed;
+                    lblMsg.Text = "Error Occured Please Try again later.";
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+
+
         }
     }
 }
