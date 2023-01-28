@@ -1,22 +1,22 @@
-﻿using DigitalLibrary.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Web;
+using DigitalLibrary.Models;
 
 namespace DigitalLibrary.Service
 {
-    public class BranchService
+    public class PublicationService
     {
         string ConnectionString = string.Empty;
         private SqlCommand _sqlCommand;
         private SqlDataAdapter _sqlDataAdapter;
         private DataSet _dtSet;
 
-        public BranchService()
+        public PublicationService()
         {
             ConnectionString = ConfigurationManager.ConnectionStrings["myDbConnection"].ConnectionString;
         }
@@ -38,17 +38,16 @@ namespace DigitalLibrary.Service
         {
             _sqlCommand.Connection.Dispose();
         }
-
-        #region GetAllBranch
-        public List<BranchModel> GetAllBranch()
+        #region GetAllPublication
+        public List<PublicationModel> GetAllPublication()
         {
-            List<BranchModel> lstBranch = null;
-            BranchModel branchModel = null;
+            List<PublicationModel> lstPublication = null;
+            PublicationModel obj = null;
             try
             {
                 CreateConnection();
                 OpenConnection();
-                _sqlCommand.CommandText = "[dbo].[BRANCH_SELECT]";
+                _sqlCommand.CommandText = "PUBLICATION_SELECT";
                 _sqlCommand.CommandType = CommandType.StoredProcedure;
                 _sqlDataAdapter = new SqlDataAdapter(_sqlCommand);
                 _dtSet = new DataSet();
@@ -58,14 +57,14 @@ namespace DigitalLibrary.Service
 
                 if (dt.Rows.Count > 0)
                 {
-                    lstBranch = new List<BranchModel>();
+                    lstPublication = new List<PublicationModel>();
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        BranchModel obj  = new BranchModel();
-                        obj.BranchId = Convert.ToInt32(dt.Rows[i]["BranchId"]);
-                        obj.BranchName = dt.Rows[i]["BranchName"].ToString();
+                        obj = new PublicationModel();
+                        obj.PublicationId = Convert.ToInt32(dt.Rows[i]["PublicationId"]);
+                        obj.PublicationName = dt.Rows[i]["PublicationName"].ToString();
 
-                        lstBranch.Add(obj);
+                        lstPublication.Add(obj);
                     }
                 }
 
@@ -79,32 +78,75 @@ namespace DigitalLibrary.Service
             {
                 CloseConnection();
                 DisposeConnection();
-                branchModel = null;
+                obj = null;
             }
-            return lstBranch;
+            return lstPublication;
         }
         #endregion
 
-        #region GetBranchById
-        public BranchModel GetBranchById(int branchId)
+        #region InsertPublication
+        public int InsertPublication(string PublicationName)
         {
-            BranchModel objBranchModel = null;
+            int i = 0;
             try
             {
                 CreateConnection();
                 OpenConnection();
-                _sqlCommand.CommandText = "BRANCH_SELECT_BY_BID";
+                _sqlCommand.CommandText = "PUBLICATION_INSERT";
                 _sqlCommand.CommandType = CommandType.StoredProcedure;
-                _sqlCommand.Parameters.AddWithValue("@BranchId", branchId);
+                _sqlCommand.Parameters.AddWithValue("@PublicationName", PublicationName);
+                i = Convert.ToInt32(_sqlCommand.ExecuteNonQuery());
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return i;
+        }
+
+        #endregion
+
+        #region DeletePublication
+        public int DeletePublicationById(int PublicationId)
+        {
+            int i = 0;
+            try
+            {
+                CreateConnection();
+                OpenConnection();
+                _sqlCommand.CommandText = "PUBLICATION_DELETE";
+                _sqlCommand.CommandType = CommandType.StoredProcedure;
+                _sqlCommand.Parameters.AddWithValue("@PublicationId", PublicationId);
+                i = Convert.ToInt32(_sqlCommand.ExecuteNonQuery());
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return i;
+        }
+        #endregion
+
+        #region GetPublicationById
+        public PublicationModel GetPublicationById(int PublicationId)
+        {
+            PublicationModel objPublicationModel = null;
+            try
+            {
+                CreateConnection();
+                OpenConnection();
+                _sqlCommand.CommandText = "PUBLICATION_SELECT_BY_PID";
+                _sqlCommand.CommandType = CommandType.StoredProcedure;
+                _sqlCommand.Parameters.AddWithValue("@PublicationId", PublicationId);
 
                 _sqlDataAdapter = new SqlDataAdapter(_sqlCommand);
                 _dtSet = new DataSet();
                 _sqlDataAdapter.Fill(_dtSet);
                 if ((_dtSet != null) && (_dtSet.Tables[0].Rows.Count > 0))
                 {
-                    objBranchModel = new BranchModel();
-                    objBranchModel.BranchName = _dtSet.Tables[0].Rows[0]["BranchName"].ToString();
-                    objBranchModel.BranchId = Convert.ToInt32(_dtSet.Tables[0].Rows[0]["BranchId"].ToString());
+                    objPublicationModel = new PublicationModel();
+                    objPublicationModel.PublicationName = _dtSet.Tables[0].Rows[0]["PublicationName"].ToString();
+                    objPublicationModel.PublicationId = Convert.ToInt32(_dtSet.Tables[0].Rows[0]["PublicationId"].ToString());
 
                 }
             }
@@ -116,21 +158,22 @@ namespace DigitalLibrary.Service
             {
 
             }
-            return objBranchModel;
+            return objPublicationModel;
         }
         #endregion
 
-        #region InsertBranch
-        public int InsertBranch(string branchName)
+        #region UpdatePublication
+        public int UpdatePublication(PublicationModel publicationModel)
         {
             int i = 0;
             try
             {
                 CreateConnection();
                 OpenConnection();
-                _sqlCommand.CommandText = "BRANCH_INSERT";
+                _sqlCommand.CommandText = "PUBLICATION_UPDATE";
                 _sqlCommand.CommandType = CommandType.StoredProcedure;
-                _sqlCommand.Parameters.AddWithValue("@BranchName", branchName);
+                _sqlCommand.Parameters.AddWithValue("@PublicationName", publicationModel.PublicationName);
+                _sqlCommand.Parameters.AddWithValue("@PublicationId", publicationModel.PublicationId);
                 i = Convert.ToInt32(_sqlCommand.ExecuteNonQuery());
             }
             catch (Exception ex)
@@ -142,48 +185,5 @@ namespace DigitalLibrary.Service
 
         #endregion
 
-        #region DeleteBranch
-        public int DeleteBranchById(int branchId)
-        {
-            int i = 0;
-            try
-            {
-                CreateConnection();
-                OpenConnection();
-                _sqlCommand.CommandText = "BRANCH_DELETE";
-                _sqlCommand.CommandType = CommandType.StoredProcedure;
-                _sqlCommand.Parameters.AddWithValue("@BranchId", branchId);
-                i = Convert.ToInt32(_sqlCommand.ExecuteNonQuery());
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return i;
-        }
-        #endregion
-
-        #region UpdateBranch
-        public int UpdateBranch(BranchModel branchModel)
-        {
-            int i = 0;
-            try
-            {
-                CreateConnection();
-                OpenConnection();
-                _sqlCommand.CommandText = "BRANCH_UPDATE";
-                _sqlCommand.CommandType = CommandType.StoredProcedure;
-                _sqlCommand.Parameters.AddWithValue("@BranchName", branchModel.BranchName);
-                _sqlCommand.Parameters.AddWithValue("@BranchId", branchModel.BranchId);
-                i = Convert.ToInt32(_sqlCommand.ExecuteNonQuery());
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return i;
-        }
-
-        #endregion
     }
 }
