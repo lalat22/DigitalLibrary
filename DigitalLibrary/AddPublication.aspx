@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/DigitalLibrary.Master" AutoEventWireup="true" CodeBehind="AddPublication.aspx.cs" Inherits="DigitalLibrary.AddPublication" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="card text-center" style="width: 95%; margin-left: -75px;">
+    <div class="card text-center" style="width: 1201px; margin-left: -75px;">
         <div class="card-header" style="background-color: #0b3355;">
 
             <h6 style="color: ghostwhite;"><b>Add Publication</b></h6>

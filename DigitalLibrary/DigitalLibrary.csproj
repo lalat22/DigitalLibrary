@@ -107,8 +107,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AddBook.aspx" />
     <Content Include="AddBranch.aspx" />
     <Content Include="AddPublication.aspx" />
+    <Content Include="BookReport.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -167,6 +169,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddBook.aspx.cs">
+      <DependentUpon>AddBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddBook.aspx.designer.cs">
+      <DependentUpon>AddBook.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddBranch.aspx.cs">
       <DependentUpon>AddBranch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -190,6 +199,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BookReport.aspx.cs">
+      <DependentUpon>BookReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookReport.aspx.designer.cs">
+      <DependentUpon>BookReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -228,10 +244,12 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\BranchModel.cs" />
     <Compile Include="Models\PublicationModel.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\BookService.cs" />
     <Compile Include="Service\IUserService.cs" />
     <Compile Include="Service\BranchService.cs" />
     <Compile Include="Service\PublicationService.cs" />
