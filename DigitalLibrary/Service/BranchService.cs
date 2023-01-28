@@ -162,5 +162,28 @@ namespace DigitalLibrary.Service
             return i;
         }
         #endregion
+
+        #region UpdateBranch
+        public int UpdateBranch(BranchModel branchModel)
+        {
+            int i = 0;
+            try
+            {
+                CreateConnection();
+                OpenConnection();
+                _sqlCommand.CommandText = "BRANCH_UPDATE";
+                _sqlCommand.CommandType = CommandType.StoredProcedure;
+                _sqlCommand.Parameters.AddWithValue("@BranchName", branchModel.BranchName);
+                _sqlCommand.Parameters.AddWithValue("@BranchId", branchModel.BranchId);
+                i = Convert.ToInt32(_sqlCommand.ExecuteNonQuery());
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return i;
+        }
+
+        #endregion
     }
 }

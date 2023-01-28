@@ -48,8 +48,8 @@
 
 
         </div>
-        <div class="card-footer text-muted">
-            2 days ago
+        <div class="card-footer text-muted" style="background-color: #0b3355;">
+          
         </div>
     </div>
 </asp:Content>

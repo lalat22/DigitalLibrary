@@ -17,9 +17,8 @@
                 </div>
 
             </div>
-            <asp:Button ID="btnSave" runat="server" Text="Add Branch" OnClick="btnSave_Click" class="btn btn-primary" Style="margin-left: -5px; margin-top: 7px;" />
-            <%--<button type="submit" class="btn btn-primary" style="margin-left: -5px; margin-top: 7px;">Add Branch</button>--%>
-            <asp:Label ID="lblMsg" runat="server"></asp:Label>
+            <asp:Button ID="btnSave" runat="server" Text="Add Branch" OnClick="btnSave_Click" class="btn btn-primary" Style="margin-left: -14px; margin-top: 7px;" />
+           <br /> <asp:Label ID="lblMsg" runat="server"></asp:Label>
             <div style="margin-left: 495px; margin-top: 41px;">
                 <asp:GridView ID="gvBranch" runat="server" AutoGenerateColumns="False" CellPadding="6" OnRowCommand="gvBranch_RowCommand"
                     OnRowEditing="gvBranch_RowEditing" OnRowDeleting="gvBranch_RowDeleting">
@@ -45,8 +44,8 @@
 
 
         </div>
-        <div class="card-footer text-muted">
-            2 days ago
+        <div class="card-footer text-muted" style="background-color: #0b3355;">
+           
         </div>
     </div>
 </asp:Content>

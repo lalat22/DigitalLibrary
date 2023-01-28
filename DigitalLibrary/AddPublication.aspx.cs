@@ -41,6 +41,7 @@ namespace DigitalLibrary
                 btnSave.Text = "Add Publication";
                 txtPublicationName.Text = string.Empty;
                 GetAllPublication();
+                PublicationId = 0;
             }
             else
             {
