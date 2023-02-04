@@ -11,6 +11,7 @@ namespace DigitalLibrary
 {
     public partial class AddBranch : System.Web.UI.Page
     {
+        #region properties
         public int BranchId
         {
             get
@@ -22,6 +23,9 @@ namespace DigitalLibrary
                 ViewState["BranchId"] = value;
             }
         }
+
+        public static string successMsg = string.Empty;
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -43,10 +47,12 @@ namespace DigitalLibrary
             }
             else if (e.CommandName == "delete")
             {
+                BranchId = 0;
                 lblMsg.Text = string.Empty;
                 int intBranchId = Convert.ToInt32(e.CommandArgument);
-                DeleteBranchById(intBranchId);
-                GetAllBranch();
+                BranchId = intBranchId;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showDeletepopup(); });", true);
+
             }
         }
         private void GetBranchById(int branchId)
@@ -84,13 +90,13 @@ namespace DigitalLibrary
                 i = branchService.InsertBranch(branchName);
                 if (i > 0)
                 {
-                    lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
-                    lblMsg.Text = "Branch Added SuccessFully.";
+                    successMsg = "Your branch added successfully.";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showmodel(); });", true);
                 }
                 else
                 {
-                    lblMsg.ForeColor = System.Drawing.Color.IndianRed;
-                    lblMsg.Text = "Error Occured.";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showErrorpopup(); });", true);
+
                 }
             }
             catch (Exception ex)
@@ -107,13 +113,13 @@ namespace DigitalLibrary
 
             if (i > 0)
             {
-                lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
-                lblMsg.Text = "Branch Deleted SuccessFully.";
+                successMsg = "Branch Deleted SuccessFully.";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showmodel(); });", true);
             }
             else
             {
-                lblMsg.ForeColor = System.Drawing.Color.IndianRed;
-                lblMsg.Text = "Error Occured.";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showErrorpopup(); });", true);
+
             }
         }
         protected void gvBranch_RowEditing(object sender, GridViewEditEventArgs e)
@@ -161,13 +167,13 @@ namespace DigitalLibrary
                 i = branchService.UpdateBranch(objBranchModel);
                 if (i > 0)
                 {
-                    lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
-                    lblMsg.Text = "Branch Updated SuccessFully.";
+                    successMsg = "Your branch updated successfully.";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showmodel(); });", true);
                 }
                 else
                 {
-                    lblMsg.ForeColor = System.Drawing.Color.IndianRed;
-                    lblMsg.Text = "Error Occured Please Try again later.";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showErrorpopup(); });", true);
+
                 }
             }
             catch (Exception ex)
@@ -175,6 +181,26 @@ namespace DigitalLibrary
             }
 
 
+        }
+
+        protected void btnCancle_Click(object sender, EventArgs e)
+        {
+            GetAllBranch();
+            txtBranchName.Text = string.Empty;
+            btnSave.Text = "Add";
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            DeleteBranchById(BranchId);
+            GetAllBranch();
+            BranchId = 0;
+        }
+
+        protected void btnDeleteCancel_Click(object sender, EventArgs e)
+        {
+            BranchId = 0;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { closeDeletepopup(); });", true);
         }
     }
 }
