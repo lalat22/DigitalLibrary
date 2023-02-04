@@ -13,6 +13,7 @@ namespace DigitalLibrary
 {
     public partial class AddBook : System.Web.UI.Page
     {
+        public static string successMsg = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -97,8 +98,9 @@ namespace DigitalLibrary
                 i = bookService.InsertBook(bookModel);
                 if (i > 0)
                 {
-                    lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
-                    lblMsg.Text = "Book Added SuccessFully.";
+                    successMsg = "Book Added SuccessFully.";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showmodel(); });", true);
+                    
                 }
                 else
                 {

@@ -60,15 +60,6 @@ namespace DigitalLibrary
         protected global::System.Web.UI.WebControls.View View2;
 
         /// <summary>
-        /// lblbname control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblbname;
-
-        /// <summary>
         /// Image2 control.
         /// </summary>
         /// <remarks>
@@ -76,6 +67,33 @@ namespace DigitalLibrary
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image2;
+
+        /// <summary>
+        /// lblProfileBook control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProfileBook;
+
+        /// <summary>
+        /// lblProfileAuthor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProfileAuthor;
+
+        /// <summary>
+        /// lblbname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblbname;
 
         /// <summary>
         /// lblauthor control.
@@ -114,33 +132,6 @@ namespace DigitalLibrary
         protected global::System.Web.UI.WebControls.Label lblprice;
 
         /// <summary>
-        /// lblqnt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblqnt;
-
-        /// <summary>
-        /// lblaqnt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblaqnt;
-
-        /// <summary>
-        /// lblrqnt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblrqnt;
-
-        /// <summary>
         /// lbldetail control.
         /// </summary>
         /// <remarks>
@@ -156,6 +147,6 @@ namespace DigitalLibrary
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBack;
+        protected global::System.Web.UI.WebControls.ImageButton btnBack;
     }
 }
