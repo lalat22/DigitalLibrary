@@ -195,7 +195,7 @@ namespace DigitalLibrary
 
         protected void btnCancle_Click(object sender, EventArgs e)
         {
-
+            PublicationId = 0;
             GetAllPublication();
             txtPublicationName.Text = string.Empty;
             btnSave.Text = "Add";
