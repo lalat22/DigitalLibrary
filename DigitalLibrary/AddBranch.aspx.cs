@@ -185,6 +185,7 @@ namespace DigitalLibrary
 
         protected void btnCancle_Click(object sender, EventArgs e)
         {
+            BranchId = 0;
             GetAllBranch();
             txtBranchName.Text = string.Empty;
             btnSave.Text = "Add";

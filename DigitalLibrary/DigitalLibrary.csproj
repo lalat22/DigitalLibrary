@@ -133,8 +133,16 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="DigitalLibrary.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Images\Asp.Net.jpg" />
+    <Content Include="Images\Book1.png" />
     <Content Include="Images\cancel.png" />
+    <Content Include="Images\Csharp.jpg" />
     <Content Include="Images\GroupLibrary.png" />
+    <Content Include="Images\javaa.jfif" />
+    <Content Include="Images\library3.png" />
+    <Content Include="Images\loginLogo.png" />
+    <Content Include="Images\Logout.png" />
+    <Content Include="Images\undo.png" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -166,8 +174,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="VideoLogin.aspx" />
-    <Content Include="Video\study.mp4" />
-    <Content Include="Video\Van_Website_Banner.mp4" />
+    <Content Include="Video\Library Environment.mp4" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
