@@ -17,7 +17,7 @@
 
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PWC - ITP</title>
+    <title>Digital Library</title>
     <style type="text/css" data-vite-dev-id="D:/Devops/DefaultCollection/ITP/pwc-itp-web/src/PwcItp.UI/src/App.css">
         #root {
             /* max-width: 1280px;  */

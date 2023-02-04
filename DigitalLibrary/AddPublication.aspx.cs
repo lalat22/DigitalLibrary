@@ -23,6 +23,7 @@ namespace DigitalLibrary
                 ViewState["PublicationId"] = value;
             }
         }
+        public static string successMsg = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -68,10 +69,12 @@ namespace DigitalLibrary
             }
             else if (e.CommandName == "delete")
             {
+                PublicationId = 0;
                 lblMsg.Text = string.Empty;
                 int intPublicationId = Convert.ToInt32(e.CommandArgument);
-                DeletePublicationById(intPublicationId);
-                GetAllPublication();
+                PublicationId = intPublicationId;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showDeletepopup(); });", true);
+
 
             }
         }
@@ -112,13 +115,15 @@ namespace DigitalLibrary
                 i = publication.InsertPublication(publicationName);
                 if (i > 0)
                 {
-                    lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
-                    lblMsg.Text = "Publication Added SuccessFully.";
+                    successMsg = "Your publication added successfully.";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showmodel(); });", true);
+                    //lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
+                    //lblMsg.Text = "Publication Added SuccessFully.";
                 }
                 else
                 {
-                    lblMsg.ForeColor = System.Drawing.Color.IndianRed;
-                    lblMsg.Text = "Error Occured.";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showErrorpopup(); });", true);
+
                 }
             }
             catch (Exception ex)
@@ -135,13 +140,15 @@ namespace DigitalLibrary
 
             if (i > 0)
             {
-                lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
-                lblMsg.Text = "Publication Deleted SuccessFully.";
+                successMsg = "Publication deleted successfully.";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showmodel(); });", true);
+                //lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
+                //lblMsg.Text = "Publication Deleted SuccessFully.";
             }
             else
             {
-                lblMsg.ForeColor = System.Drawing.Color.IndianRed;
-                lblMsg.Text = "Error Occured.";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showErrorpopup(); });", true);
+
             }
         }
 
@@ -169,19 +176,42 @@ namespace DigitalLibrary
                 i = publicationService.UpdatePublication(publicationModel);
                 if (i > 0)
                 {
-                    lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
-                    lblMsg.Text = "Publication Updated SuccessFully.";
+                    //lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
+                    //lblMsg.Text = "Publication Updated SuccessFully.";
+                    successMsg = "Your publication updated successfully.";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showmodel(); });", true);
                 }
                 else
                 {
-                    lblMsg.ForeColor = System.Drawing.Color.IndianRed;
-                    lblMsg.Text = "Error Occured.";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showErrorpopup(); });", true);
+
                 }
             }
             catch (Exception ex) { 
             }
            
 
+        }
+
+        protected void btnCancle_Click(object sender, EventArgs e)
+        {
+
+            GetAllPublication();
+            txtPublicationName.Text = string.Empty;
+            btnSave.Text = "Add";
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            DeletePublicationById(PublicationId);
+            GetAllPublication();
+            PublicationId = 0;
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            PublicationId = 0;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { closeDeletepopup(); });", true);
         }
     }
 }

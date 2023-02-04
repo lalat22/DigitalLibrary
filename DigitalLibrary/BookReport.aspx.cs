@@ -40,10 +40,7 @@ namespace DigitalLibrary
 
         }
 
-        protected void btnBack_Click(object sender, EventArgs e)
-        {
-            MultiView1.ActiveViewIndex = 0;
-        }
+       
         private void GetAllBooks()
         {
             List<BookModel> lstbooks = new List<BookModel>();
@@ -62,15 +59,22 @@ namespace DigitalLibrary
             {
                 lblbname.Text = book.BookName;
                 lblauthor.Text = book.Author;
+                lblProfileAuthor.Text = book.Author;
+                lblProfileBook.Text = book.BookName;
                 lblbran.Text = book.Branch;
                 lblpub.Text = book.Publication;
                 lblprice.Text = book.Price.ToString();
-                lblqnt.Text= book.Quantities.ToString();
-                lblaqnt.Text = book.AvlQuantity.ToString();
-                lblrqnt.Text = book.RentQuantity.ToString();
+                //lblqnt.Text= book.Quantities.ToString();
+                //lblavailqnt.Text = book.AvlQuantity.ToString();
+                //lblrqnt.Text = book.RentQuantity.ToString();
                 lbldetail.Text = book.Detail;
                 Image2.ImageUrl = "../Images/"+book.Images;
             }
+        }
+
+        protected void btnBack_Click(object sender, ImageClickEventArgs e)
+        {
+            MultiView1.ActiveViewIndex = 0;
         }
     }
 }
