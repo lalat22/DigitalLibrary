@@ -5,6 +5,7 @@
 <html>
 <head runat="server">
     <title></title>
+   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     
 
@@ -24,6 +25,8 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+ 
 
    
     <style>
@@ -113,6 +116,7 @@
                 right: 5px;
             }
     </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -151,15 +155,15 @@
                     <i class="fa fa-file" aria-hidden="true"></i>
                     Book Report
                 </a>
-                  <a href="javascript:void(0)" style="font-size: 20px">
+                  <a href="AddStudent.aspx" style="font-size: 20px">
                     <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                     Add Student
                 </a>
-                  <a href="javascript:void(0)" style="font-size: 20px">
+                  <a href="StudentReport.aspx" style="font-size: 20px">
                     <i class="fa fa-file" aria-hidden="true"></i>
                     Student Report
                 </a>
-                  <a href="javascript:void(0)" style="font-size: 20px">
+                  <a href="IssueBook.aspx" style="font-size: 20px">
                     <i class="fa fa-book" aria-hidden="true"></i>
                     Issue Book
                 </a>

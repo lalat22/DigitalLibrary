@@ -110,6 +110,7 @@
     <Content Include="AddBook.aspx" />
     <Content Include="AddBranch.aspx" />
     <Content Include="AddPublication.aspx" />
+    <Content Include="AddStudent.aspx" />
     <Content Include="BookReport.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -143,6 +144,7 @@
     <Content Include="Images\loginLogo.png" />
     <Content Include="Images\Logout.png" />
     <Content Include="Images\undo.png" />
+    <Content Include="IssueBook.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -173,6 +175,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="StudentReport.aspx" />
     <Content Include="VideoLogin.aspx" />
     <Content Include="Video\Library Environment.mp4" />
     <Content Include="ViewSwitcher.ascx" />
@@ -201,6 +204,13 @@
     </Compile>
     <Compile Include="AddPublication.aspx.designer.cs">
       <DependentUpon>AddPublication.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddStudent.aspx.cs">
+      <DependentUpon>AddStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddStudent.aspx.designer.cs">
+      <DependentUpon>AddStudent.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -249,6 +259,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IssueBook.aspx.cs">
+      <DependentUpon>IssueBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IssueBook.aspx.designer.cs">
+      <DependentUpon>IssueBook.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -258,13 +275,17 @@
     </Compile>
     <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\BranchModel.cs" />
+    <Compile Include="Models\IssueBookModel.cs" />
     <Compile Include="Models\PublicationModel.cs" />
+    <Compile Include="Models\StudentModel.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BookService.cs" />
+    <Compile Include="Service\IssueBookService.cs" />
     <Compile Include="Service\IUserService.cs" />
     <Compile Include="Service\BranchService.cs" />
     <Compile Include="Service\PublicationService.cs" />
+    <Compile Include="Service\StudentService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -279,6 +300,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="StudentReport.aspx.cs">
+      <DependentUpon>StudentReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentReport.aspx.designer.cs">
+      <DependentUpon>StudentReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="VideoLogin.aspx.cs">
       <DependentUpon>VideoLogin.aspx</DependentUpon>

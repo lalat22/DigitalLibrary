@@ -11,62 +11,44 @@ namespace DigitalLibrary
 {
 
 
-    public partial class BookReport
+    public partial class IssueBook
     {
 
         /// <summary>
-        /// MultiView1 control.
+        /// ddlPublication control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView MultiView1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPublication;
 
         /// <summary>
-        /// View1 control.
+        /// ddlBook control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View View1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBook;
 
         /// <summary>
-        /// lblmsg0 control.
+        /// btnViewbook control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmsg0;
+        protected global::System.Web.UI.WebControls.Button btnViewbook;
 
         /// <summary>
-        /// gvBookRebort control.
+        /// dvIssueBook control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvBookRebort;
-
-        /// <summary>
-        /// lblDelete control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDelete;
-
-        /// <summary>
-        /// View2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.View View2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvIssueBook;
 
         /// <summary>
         /// Image2 control.
@@ -141,21 +123,30 @@ namespace DigitalLibrary
         protected global::System.Web.UI.WebControls.Label lblprice;
 
         /// <summary>
-        /// lbldetail control.
+        /// lblQuantities control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbldetail;
+        protected global::System.Web.UI.WebControls.Label lblQuantities;
 
         /// <summary>
-        /// btnBack control.
+        /// lblAvlQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnBack;
+        protected global::System.Web.UI.WebControls.Label lblAvlQuantity;
+
+        /// <summary>
+        /// lblRentQuantity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRentQuantity;
     }
 }
