@@ -11,11 +11,11 @@
         </div>
         <div class="card-body" style="background-color: #f66f00;">
             <%--<img src="../Images/GroupLibrary.png" style="width:100%;height:500px;" />--%>
-             <video autoplay loop muted plays-inline class="back-video" style="width:100%;height:500px;">
-                    <source src="Video/Library Environment.mp4" type="video/mp4" />
-               </video>
+            <video autoplay loop muted plays-inline class="back-video" style="width: 100%; height: 500px;">
+                <source src="Video/Library Environment.mp4" type="video/mp4" />
+            </video>
 
-            
+
         </div>
         <div class="card-footer text-muted" style="background-color: #0b3355;">
         </div>

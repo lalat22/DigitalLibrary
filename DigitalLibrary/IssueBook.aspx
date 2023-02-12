@@ -1,78 +1,45 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/DigitalLibrary.Master" AutoEventWireup="true" CodeBehind="BookReport.aspx.cs" Inherits="DigitalLibrary.BookReport" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/DigitalLibrary.Master" AutoEventWireup="true" CodeBehind="IssueBook.aspx.cs" Inherits="DigitalLibrary.IssueBook" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="card text-center" style="width: 95%; margin-left: -75px;">
         <div class="card-header" style="background-color: #0b3355;">
 
-            <h6 style="color: ghostwhite;"><b>View Book</b></h6>
+            <h6 style="color: ghostwhite;"><b>Welcome to Digital Library System</b></h6>
         </div>
-        <div class="card-body" style="background-color: rgb(145, 209, 208);">
+        <div class="card-body" style="background-color: rgb(145, 209, 208);overflow-y: scroll; overflow-x: hidden;height:440px">
 
-            <asp:MultiView ID="MultiView1" runat="server">
-                <asp:View ID="View1" runat="server">
-                    <table class="tbl">
-                        <tr>
-                            <td class="tblhead">
-                                <asp:Label ID="lblmsg0" runat="server"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <%--gridvew--%>
-                                <div style="width: 568px; margin-left: 213px;">
-                                    <asp:GridView ID="gvBookRebort" runat="server" class="table align-middle mb-0 bg-white" AlternatingRowStyle-BackColor="#99ccff" AutoGenerateColumns="False" CellPadding="6" OnRowCommand="gvBookRebort_RowCommand"
-                                        OnRowEditing="gvBookRebort_RowEditing" OnRowDeleting="gvBookRebort_RowDeleting">
-                                        <Columns>
-                                            <asp:TemplateField HeaderText="Book Name">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="lblBookName" runat="server" Text='<%#Eval("BookName") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Price">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="lblPrice" runat="server" Text='<%#Eval("Price") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Quantities">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="lblQuantities" runat="server" Text='<%#Eval("Quantities") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="AvlQuantity">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="lblAvlQuantity" runat="server" Text='<%#Eval("AvlQuantity") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="RentQuantity">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="lblRentQuantity" runat="server" Text='<%#Eval("RentQuantity") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Actions">
-                                                <ItemTemplate>
-                                                    <asp:LinkButton ID="lnkView" runat="server" CommandName="view" CommandArgument='<%#Eval("BookId") %>'> <span class="fa fa-eye"></span></asp:LinkButton>
-                                                    <asp:LinkButton ID="lnkDelete" runat="server" CommandName="delete" CommandArgument='<%#Eval("BookId") %>'><span class="fa fa-trash-o"></span></asp:LinkButton>
+            <div style="margin-left: 298px;">
+                <table style="margin-left:-130px">
 
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                        </Columns>
+                    <tr>
+                        <td>SelectPublication<em style="color: Red">*</em> :
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="ddlPublication" runat="server" class="form-control" DataValueField="PublicationId" DataTextField="PublicationName" AutoPostBack="True" OnSelectedIndexChanged="ddlPublication_SelectedIndexChanged"></asp:DropDownList>
 
-                                        <HeaderStyle BackColor="#298ca3" ForeColor="#ffffff" />
-                                        <RowStyle BackColor="#e7ceb6" />
-                                    </asp:GridView>
+                        </td>
+                        
+                        <td style="margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;SelectBook<em style="color: Red">*</em> :
+                        </td>
+                        <td >
+                            <asp:DropDownList ID="ddlBook" runat="server" class="form-control" style="width:140px;" DataValueField="BookId" DataTextField="BookName"></asp:DropDownList>
 
-                                </div>
-                                <asp:Label ID="lblDelete" runat="server"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                    </table>
-                </asp:View>
-                <asp:View ID="View2" runat="server">
-                    <section style="background-color: #eee;">
-                        <div class="container py-5">
+                        </td>
+                        <td >
+                            <asp:Button ID="btnViewbook" runat="server" Text="View" OnClick="btnViewbook_Click" class="btn btn-primary btn-lg btn3d" Style="margin-left: 15px; margin-top: 18px;"/>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                    </tr>
+
+
+
+                </table>
+
+            </div>
+            <div class="container py-5" id="dvIssueBook" runat="server" visible="false" >
 
 
                             <div class="row">
@@ -150,27 +117,44 @@
                                             <hr>
                                             <div class="row">
                                                 <div class="col-sm-3">
-                                                    <p class="mb-0">Details</p>
+                                                    <p class="mb-0">Quantities</p>
                                                 </div>
                                                 <div class="col-sm-9">
                                                     <p class="text-muted mb-0">
-                                                        <asp:Label ID="lbldetail" runat="server"></asp:Label>
+                                                        <asp:Label ID="lblQuantities" runat="server"></asp:Label>
                                                     </p>
                                                 </div>
                                             </div>
+                                            <hr />
+                                             <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">AvlQuantity</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p class="text-muted mb-0">
+                                                        <asp:Label ID="lblAvlQuantity" runat="server"></asp:Label>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                             <hr />
+                                             <div class="row">
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0">RentQuantity</p>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p class="text-muted mb-0">
+                                                        <asp:Label ID="lblRentQuantity" runat="server"></asp:Label>
+                                                    </p>
+                                                </div>
+                                            </div>
+
                                         </div>
 
                                     </div>
-                                    <div>
-                                        <asp:ImageButton ID="btnBack" runat="server" ImageUrl="~/Images/undo.png" Width="30px" Height="30px" ToolTip="Back" OnClick="btnBack_Click" />
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>
-                    </section>
-                </asp:View>
-            </asp:MultiView>
-
 
         </div>
         <div class="card-footer text-muted" style="background-color: #0b3355;">

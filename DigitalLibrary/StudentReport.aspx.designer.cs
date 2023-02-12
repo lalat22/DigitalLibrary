@@ -11,7 +11,7 @@ namespace DigitalLibrary
 {
 
 
-    public partial class BookReport
+    public partial class StudentReport
     {
 
         /// <summary>
@@ -33,22 +33,22 @@ namespace DigitalLibrary
         protected global::System.Web.UI.WebControls.View View1;
 
         /// <summary>
-        /// lblmsg0 control.
+        /// lblmsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmsg0;
+        protected global::System.Web.UI.WebControls.Label lblmsg;
 
         /// <summary>
-        /// gvBookRebort control.
+        /// gvStudentReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvBookRebort;
+        protected global::System.Web.UI.WebControls.GridView gvStudentReport;
 
         /// <summary>
         /// lblDelete control.
@@ -96,58 +96,67 @@ namespace DigitalLibrary
         protected global::System.Web.UI.WebControls.Label lblProfileAuthor;
 
         /// <summary>
-        /// lblbname control.
+        /// lblbStudentName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblbname;
+        protected global::System.Web.UI.WebControls.Label lblbStudentName;
 
         /// <summary>
-        /// lblauthor control.
+        /// lblphn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblauthor;
+        protected global::System.Web.UI.WebControls.Label lblphn;
 
         /// <summary>
-        /// lblpub control.
+        /// lblAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblpub;
+        protected global::System.Web.UI.WebControls.Label lblAddress;
 
         /// <summary>
-        /// lblbran control.
+        /// lblPinCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblbran;
+        protected global::System.Web.UI.WebControls.Label lblPinCode;
 
         /// <summary>
-        /// lblprice control.
+        /// lblBranch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblprice;
+        protected global::System.Web.UI.WebControls.Label lblBranch;
 
         /// <summary>
-        /// lbldetail control.
+        /// lblDOB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbldetail;
+        protected global::System.Web.UI.WebControls.Label lblDOB;
+
+        /// <summary>
+        /// lblEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
         /// btnBack control.
@@ -157,5 +166,23 @@ namespace DigitalLibrary
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton btnBack;
+
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
+
+        /// <summary>
+        /// btnDelete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDelete;
     }
 }

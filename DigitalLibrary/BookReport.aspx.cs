@@ -28,8 +28,41 @@ namespace DigitalLibrary
                 int intBookId = Convert.ToInt32(e.CommandArgument);
                 GetBookDetailById(intBookId);
             }
+            else if (e.CommandName == "delete")
+            {
+                lblDelete.Text = string.Empty;
+                //BookId = 0;
+                int intBookId = Convert.ToInt32(e.CommandArgument);
+               
+                DeleteBookById(intBookId);
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showDeletepopup(); });", true);
+
+
+            }
         }
 
+
+        private void DeleteBookById(int bookId)
+        {
+            int i = 0;
+            BookService bookService = new BookService();
+            i = bookService.DeleteBookById(bookId);
+
+            if (i > 0)
+            {
+                lblDelete.Text = "Student deleted successfully.";
+                GetAllBooks();
+                //successMsg = "Student deleted successfully.";
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showmodel(); });", true);
+
+            }
+            else
+            {
+                lblDelete.Text = "Error Occured.";
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showErrorpopup(); });", true);
+
+            }
+        }
         protected void gvBookRebort_RowEditing(object sender, GridViewEditEventArgs e)
         {
 
