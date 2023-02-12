@@ -92,7 +92,7 @@ namespace DigitalLibrary
                 bookModel.Branch= ddlBranch.SelectedItem.Text;  
                 bookModel.Quantities= Convert.ToInt32( txtQuantity.Text);
                 bookModel.AvlQuantity= Convert.ToInt32( txtQuantity.Text);
-                bookModel.RentQuantity= Convert.ToInt32( txtQuantity.Text); 
+                //bookModel.RentQuantity= Convert.ToInt32( txtQuantity.Text); 
                 bookModel.Images=   fuBook.FileName;
 
 
