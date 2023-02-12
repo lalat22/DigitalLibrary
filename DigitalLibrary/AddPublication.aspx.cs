@@ -213,5 +213,25 @@ namespace DigitalLibrary
             PublicationId = 0;
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { closeDeletepopup(); });", true);
         }
+
+       
+
+        protected void gvPublication_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            //gvPublication.PageIndex = e.NewPageIndex;
+            //this.GetAllPublication();
+        }
+
+        public IEnumerable<int> GetPages()
+        {
+            return Enumerable.Range(1, gvPublication.PageCount);
+        }
+        protected void lnkPaging_Click(object sender, EventArgs e)
+        {
+            LinkButton pageLink = (LinkButton)sender;
+            gvPublication.PageIndex = Int32.Parse(pageLink.CommandArgument) - 1;
+
+            GetAllPublication();
+        }
     }
 }

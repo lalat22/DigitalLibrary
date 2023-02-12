@@ -35,8 +35,8 @@ namespace DigitalLibrary
                 ddlBranch.DataSource = lstBranch;
                 ddlBranch.DataTextField = "BranchName";
                 ddlBranch.DataValueField = "BranchId";
-                ddlBranch.Items.Insert(0, "--Select Branch--");
                 ddlBranch.DataBind();
+                ddlBranch.Items.Insert(0, new ListItem("--Select Branch--", "0"));
             }
             catch (Exception ex)
             {
@@ -55,8 +55,10 @@ namespace DigitalLibrary
                 ddlPublication.DataSource = lstPublication;
                 ddlPublication.DataTextField = "PublicationName";
                 ddlPublication.DataValueField = "PublicationId";
-                ddlPublication.Items.Insert(0, "--Select Publication--");
                 ddlPublication.DataBind();
+                ddlPublication.Items.Insert(0, new ListItem("--Select Publication--", "0"));
+
+
             }
             catch (Exception ex)
             {
@@ -90,7 +92,7 @@ namespace DigitalLibrary
                 bookModel.Branch= ddlBranch.SelectedItem.Text;  
                 bookModel.Quantities= Convert.ToInt32( txtQuantity.Text);
                 bookModel.AvlQuantity= Convert.ToInt32( txtQuantity.Text);
-                bookModel.RentQuantity= Convert.ToInt32( txtQuantity.Text); 
+                //bookModel.RentQuantity= Convert.ToInt32( txtQuantity.Text); 
                 bookModel.Images=   fuBook.FileName;
 
 

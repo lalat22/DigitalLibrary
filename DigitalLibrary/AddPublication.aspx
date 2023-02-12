@@ -27,7 +27,7 @@
             <asp:Label ID="lblMsg" runat="server"></asp:Label>
             <div style="width: 568px; margin-left: 288px;">
                 <asp:GridView ID="gvPublication" runat="server" class="table align-middle mb-0 bg-white" AlternatingRowStyle-BackColor="#99ccff" AutoGenerateColumns="False" CellPadding="6" OnRowCommand="gvPublication_RowCommand"
-                    OnRowEditing="gvPublication_RowEditing" OnRowDeleting="gvPublication_RowDeleting">
+                    OnRowEditing="gvPublication_RowEditing" OnRowDeleting="gvPublication_RowDeleting" OnPageIndexChanging="gvPublication_PageIndexChanging" AllowPaging="true" PageSize="5" PagerStyle-CssClass="paging">
                     <Columns>
                         <asp:TemplateField HeaderText="Publication Name">
                             <ItemTemplate>
@@ -45,9 +45,26 @@
 
                     <HeaderStyle BackColor="#298ca3" ForeColor="#ffffff" />
                     <RowStyle BackColor="#e7ceb6" />
+
+                    <PagerStyle HorizontalAlign="Center" />
+                    <PagerTemplate>
+                        <ul class="pagination">
+                            <asp:Repeater ID="Pager" ItemType="System.Int32" SelectMethod="GetPages" runat="server">
+                                <ItemTemplate>
+                                    <li class='<%#((int)Item == this.gvPublication.PageIndex+1)? "active" : "" %>'>
+                                        <asp:LinkButton CommandName="Page" ID="lnkPaging" CommandArgument="<%# Item %>"
+                                            Text="<%# Item %>" runat="server" OnClick="lnkPaging_Click" />
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </ul>
+                    </PagerTemplate>
+
+
                 </asp:GridView>
 
             </div>
+
 
 
         </div>
@@ -75,7 +92,7 @@
         </div>
 
 
-        <!----modal starts here--->
+        <!----Delete modal starts here--->
         <div id="DeleteModal" class="modal fade" role='dialog'>
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -96,7 +113,7 @@
                 </div>
             </div>
         </div>
-        <!--Modal ends here--->
+        <!-- Delete Modal ends here--->
 
         <%--Error Popup--%>
         <div class="popup" id="error" style="display: none;">

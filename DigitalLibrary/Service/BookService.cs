@@ -257,5 +257,27 @@ namespace DigitalLibrary.Service
             return lstBook;
         }
         #endregion
+
+        #region DeleteBook()
+        public int DeleteBookById(int bookId)
+        {
+            int i = 0;
+            try
+            {
+                CreateConnection();
+                OpenConnection();
+                _sqlCommand.CommandText = "Book_DELETE";
+                _sqlCommand.CommandType = CommandType.StoredProcedure;
+                _sqlCommand.Parameters.AddWithValue("@BookId", bookId);
+                i = Convert.ToInt32(_sqlCommand.ExecuteNonQuery());
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return i;
+        }
+
+        #endregion
     }
 }
