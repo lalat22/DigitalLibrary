@@ -3,6 +3,7 @@ using DigitalLibrary.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -40,9 +41,20 @@ namespace DigitalLibrary
                 userData = userService.DoValidate(userLogs);
                 if(userData !=null)
                 {
-                    //lblMsg.ForeColor = System.Drawing.Color.GhostWhite;
-                    //lblMsg.Text = "Login SccessFully.";
-                    Response.Redirect("Demo.aspx");
+                    string hostName = Dns.GetHostName(); // Retrive the Name of HOST
+                    string myIP = Dns.GetHostByName(hostName).AddressList[0].ToString(); // Get the IP
+                    bool isRestricted = userService.CheckRestictedIPAddress(myIP);
+                    if (!isRestricted)
+                    {
+                        Response.Redirect("Demo.aspx");
+                    }
+                    else
+                    {
+                        lblMsg.ForeColor = System.Drawing.Color.IndianRed;
+                        lblMsg.Text = "You can't access the application";
+                    }
+
+                    
                 }
                 else
                 {

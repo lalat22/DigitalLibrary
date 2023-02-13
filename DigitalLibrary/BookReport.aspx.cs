@@ -2,8 +2,10 @@
 using DigitalLibrary.Service;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.ServiceModel.Channels;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -50,7 +52,7 @@ namespace DigitalLibrary
 
             if (i > 0)
             {
-                lblDelete.Text = "Student deleted successfully.";
+                lblDelete.Text = "Book deleted successfully.";
                 GetAllBooks();
                 //successMsg = "Student deleted successfully.";
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { showmodel(); });", true);
@@ -73,7 +75,13 @@ namespace DigitalLibrary
 
         }
 
-       
+        protected override void InitializeCulture()
+        {
+            CultureInfo ci = new CultureInfo("en-IN");
+            ci.NumberFormat.CurrencySymbol = "&#8377;";
+            Thread.CurrentThread.CurrentCulture = ci;
+            base.InitializeCulture();
+        }
         private void GetAllBooks()
         {
             List<BookModel> lstbooks = new List<BookModel>();

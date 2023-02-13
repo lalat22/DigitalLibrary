@@ -17,6 +17,7 @@ namespace DigitalLibrary
             if(!IsPostBack)
             {
                 GetAllPublication();
+                ddlBook.Items.Insert(0, new ListItem("--Select Book--", "0"));
             }
         }
         private void GetBooksByPubliction(string Publication)
@@ -25,6 +26,7 @@ namespace DigitalLibrary
             IssueBookService issueBookService = new IssueBookService();
             try
             {
+                ddlBook.Items.Clear();
                 lstbook = issueBookService.GetBooksByPublication(Publication);
                 ddlBook.DataSource = lstbook;
                 ddlBook.DataTextField = "BookName";

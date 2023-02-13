@@ -26,7 +26,7 @@
 
                         </td>
                         <td >
-                            <asp:Button ID="btnViewbook" runat="server" Text="View" OnClick="btnViewbook_Click" class="btn btn-primary btn-lg btn3d" Style="margin-left: 15px; margin-top: 18px;"/>
+                            <asp:Button ID="btnViewbook" runat="server" Text="Select" OnClick="btnViewbook_Click" class="btn btn-primary btn-lg btn3d" Style="margin-left: 15px; margin-top: 18px;height:44px;"/>
 
                         </td>
                     </tr>

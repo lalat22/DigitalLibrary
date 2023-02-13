@@ -38,6 +38,8 @@ namespace DigitalLibrary.Service
         {
             _sqlCommand.Connection.Dispose();
         }
+
+        #region DoValidate
         public UserData DoValidate(UserData.UserLogs userLogs)
         {
             UserData userData = null;
@@ -76,7 +78,48 @@ namespace DigitalLibrary.Service
             }
             return userData;
         }
+        #endregion
 
+        #region CheckRestictedIPAddress
+        public bool CheckRestictedIPAddress(string ipAddress)
+        {
+            bool isRestricted = true;
+            try
+            {
+                CreateConnection();
+                OpenConnection();
+                _sqlCommand.CommandText = "CheckRestictedIPAddress";
+                _sqlCommand.CommandType = CommandType.StoredProcedure;
+                _sqlCommand.Parameters.AddWithValue("@IPAddress", ipAddress);
+
+                SqlParameter outputPara = new SqlParameter();
+                outputPara.ParameterName = "@IsRestrictedIP";
+                outputPara.Direction = System.Data.ParameterDirection.Output;
+                outputPara.SqlDbType = System.Data.SqlDbType.Bit;
+                _sqlCommand.Parameters.Add(outputPara);
+
+                _sqlDataAdapter = new SqlDataAdapter(_sqlCommand);
+                _dtSet = new DataSet();
+                _sqlDataAdapter.Fill(_dtSet);
+
+                DataTable dt = new DataTable();
+                isRestricted = Convert.ToBoolean(outputPara.Value);
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+            finally
+            {
+                CloseConnection();
+                DisposeConnection();
+            }
+
+            return isRestricted;
+        }
+        #endregion
 
     }
 }

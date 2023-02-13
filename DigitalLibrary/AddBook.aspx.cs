@@ -36,7 +36,7 @@ namespace DigitalLibrary
                 ddlBranch.DataTextField = "BranchName";
                 ddlBranch.DataValueField = "BranchId";
                 ddlBranch.DataBind();
-                ddlBranch.Items.Insert(0, new ListItem("--Select Branch--", "0"));
+                ddlBranch.Items.Insert(0, new ListItem("-- Select Branch --", "0"));
             }
             catch (Exception ex)
             {
@@ -56,7 +56,7 @@ namespace DigitalLibrary
                 ddlPublication.DataTextField = "PublicationName";
                 ddlPublication.DataValueField = "PublicationId";
                 ddlPublication.DataBind();
-                ddlPublication.Items.Insert(0, new ListItem("--Select Publication--", "0"));
+                ddlPublication.Items.Insert(0, new ListItem("-- Select Publication --", "0"));
 
 
             }
@@ -88,8 +88,8 @@ namespace DigitalLibrary
                 bookModel.Author = txtAuthor.Text;
                 bookModel.Detail=txtDetails.Text;
                 bookModel.Price= Convert.ToDecimal(txtPrice.Text);
-                bookModel.Publication = ddlPublication.SelectedItem.Text;
-                bookModel.Branch= ddlBranch.SelectedItem.Text;  
+                bookModel.Publication = ddlPublication.SelectedIndex > 0 ? ddlPublication.SelectedItem.Text : string.Empty;
+                bookModel.Branch = ddlBranch.SelectedIndex > 0 ? ddlBranch.SelectedItem.Text : string.Empty;  
                 bookModel.Quantities= Convert.ToInt32( txtQuantity.Text);
                 bookModel.AvlQuantity= Convert.ToInt32( txtQuantity.Text);
                 //bookModel.RentQuantity= Convert.ToInt32( txtQuantity.Text); 
@@ -115,6 +115,17 @@ namespace DigitalLibrary
             }
 
 
+        }
+        private void ClearControl()
+        {
+            txtBookName.Text = string.Empty;
+            txtAuthor.Text = string.Empty;
+            txtDetails.Text = string.Empty;
+            txtPrice.Text = string.Empty;
+            txtQuantity.Text = string.Empty;
+            ddlBranch.SelectedIndex = 0;
+            ddlPublication.SelectedIndex = 0;
+            fuBook.Attributes.Clear();
         }
     }
 }

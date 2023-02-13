@@ -42,7 +42,7 @@ namespace DigitalLibrary
                 ddlBranch.DataTextField = "BranchName";
                 ddlBranch.DataValueField = "BranchId";
                 ddlBranch.DataBind();
-                ddlBranch.Items.Insert(0, new ListItem("--Select Branch--", "0"));
+                ddlBranch.Items.Insert(0, new ListItem("-- Select Branch --", "0"));
             }
             catch (Exception ex)
             {
@@ -126,6 +126,7 @@ namespace DigitalLibrary
             txtDOB.Text = string.Empty;
             txtAddress.Text = string.Empty;
             rblGender.SelectedIndex = -1;
+            ddlBranch.SelectedIndex = 0;
             fuStudent.Attributes.Clear();
         }
     }
