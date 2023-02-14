@@ -30,7 +30,8 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Price">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="lblPrice" runat="server" Text='<%#Eval("Price") %>'></asp:Label>
+                                                    <%--<asp:Label ID="lblPrice" runat="server" Text='<%#Eval("Price") %>'></asp:Label>--%>
+                                                    <asp:Label ID="lblPrice" runat="server" Text='<%#String.Format("{0:C}", Eval("Price")) %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Quantities">
