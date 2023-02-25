@@ -41,20 +41,7 @@ namespace DigitalLibrary
                 userData = userService.DoValidate(userLogs);
                 if(userData !=null)
                 {
-                    string hostName = Dns.GetHostName(); // Retrive the Name of HOST
-                    string myIP = Dns.GetHostByName(hostName).AddressList[0].ToString(); // Get the IP
-                    bool isRestricted = userService.CheckRestictedIPAddress(myIP);
-                    if (!isRestricted)
-                    {
                         Response.Redirect("Demo.aspx");
-                    }
-                    else
-                    {
-                        lblMsg.ForeColor = System.Drawing.Color.IndianRed;
-                        lblMsg.Text = "You can't access the application";
-                    }
-
-                    
                 }
                 else
                 {

@@ -136,5 +136,52 @@ namespace DigitalLibrary.Service
             return lstBook;
         }
         #endregion
+
+        #region GetStudentByBranch
+        public List<StudentModel> GetStudentByBranch(string BranchName)
+        {
+            List<StudentModel> lstStudent = null;
+            StudentModel objStudentModel = null;
+            try
+            {
+                CreateConnection();
+                OpenConnection();
+                _sqlCommand.CommandText = "STUDENT_SELECT_BY_branch";
+                _sqlCommand.CommandType = CommandType.StoredProcedure;
+                _sqlCommand.Parameters.AddWithValue("@BranchName", BranchName);
+                _sqlDataAdapter = new SqlDataAdapter(_sqlCommand);
+                _dtSet = new DataSet();
+                _sqlDataAdapter.Fill(_dtSet);
+                DataTable dt = new DataTable();
+                dt = _dtSet.Tables[0];
+
+                if (dt.Rows.Count > 0)
+                {
+                    lstStudent = new List<StudentModel>();
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        objStudentModel = new StudentModel();
+                        objStudentModel.StudentName = _dtSet.Tables[0].Rows[i]["StudentName"].ToString();
+                        objStudentModel.StudentId = Convert.ToInt32(_dtSet.Tables[0].Rows[i]["StudentId"].ToString());
+
+                        lstStudent.Add(objStudentModel);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+            finally
+            {
+                CloseConnection();
+                DisposeConnection();
+                objStudentModel = null;
+            }
+            return lstStudent;
+        }
+        #endregion
     }
 }
