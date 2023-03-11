@@ -184,7 +184,9 @@
                     <div class="child">
                         <asp:Button ID="btnBookIssue" runat="server" Text="Book Issue" OnClick="btnBookIssue_Click" class="btn btn-primary btn-lg btn3d" Style="margin-left: 15px; margin-top: 18px; height: 44px;" />
                     </div>
-                    
+                    <div class="child">
+                       <asp:Label ID="lblmsg" runat="server"></asp:Label>
+                    </div>
                 </div>
 
             </div>

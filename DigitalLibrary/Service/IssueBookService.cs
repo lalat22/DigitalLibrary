@@ -183,5 +183,54 @@ namespace DigitalLibrary.Service
             return lstStudent;
         }
         #endregion
+
+        #region InsertIssueBook
+        public int InsertIssueBook(IssueBookModel issueBookModel)
+        {
+            int i = 0;
+            try
+            {
+                CreateConnection();
+                OpenConnection();
+                _sqlCommand.CommandText = "RENT_INSERT";
+                _sqlCommand.CommandType = CommandType.StoredProcedure;
+                _sqlCommand.Parameters.AddWithValue("@BookName", issueBookModel.BookName);
+                _sqlCommand.Parameters.AddWithValue("@StudentId", issueBookModel.StudentId);
+                _sqlCommand.Parameters.AddWithValue("@Days", issueBookModel.Days);
+               
+                i = Convert.ToInt32(_sqlCommand.ExecuteNonQuery());
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return i;
+        }
+
+        #endregion
+
+        #region BookIssueToStudent
+        public int BookIssueToStudent(int bookId)
+        {
+            int i = 0;
+            try
+            {
+                CreateConnection();
+                OpenConnection();
+                _sqlCommand.CommandText = "BookIssueToStudent";
+                _sqlCommand.CommandType = CommandType.StoredProcedure;
+                _sqlCommand.Parameters.AddWithValue("@BookId", bookId);
+               
+
+                i = Convert.ToInt32(_sqlCommand.ExecuteNonQuery());
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return i;
+        }
+
+        #endregion
     }
 }

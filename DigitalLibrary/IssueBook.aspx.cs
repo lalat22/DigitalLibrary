@@ -10,6 +10,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.XPath;
 
 namespace DigitalLibrary
 {
@@ -110,9 +111,62 @@ namespace DigitalLibrary
 
         protected void btnBookIssue_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (string.IsNullOrEmpty(txtDay.Text))
+                {
+                    lblmsg.ForeColor=System.Drawing.Color.Red;
+                    lblmsg.Text = "Enter Days";
+                }
+                else
+                {
+                    if(Convert.ToInt32(lblAvlQuantity.Text)==0)
+                    {
+                        lblmsg.ForeColor = System.Drawing.Color.Red;
+                        lblmsg.Text = "Book Stock not avilable";
+                    }
+                    else
+                    {
+                        int i = InsertIssueBookDetails();
+                        int j = BookIssueToStudent();
+                        if (j > 0)
+                        {
+                            lblmsg.Text = "Book issued to " + ddlStudent.SelectedItem.Text;
+                        }
+                        int BookId = Convert.ToInt32(ddlBook.SelectedValue);
+                        GetBookDetailById(BookId);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
 
+                throw;
+            }
         }
 
+        private int InsertIssueBookDetails()
+        {
+            int result = 0;
+            IssueBookModel model = new IssueBookModel();
+            IssueBookService service = new IssueBookService();
+            model.BookName = ddlBook.SelectedItem.Text;
+            model.StudentId=Convert.ToInt32(ddlStudent.SelectedValue);
+            model.Days=Convert.ToInt32(txtDay.Text);
+            result = service.InsertIssueBook(model);
+
+
+            return result;
+        }
+
+        private int BookIssueToStudent()
+        {
+            int result = 0;
+            int BookId = Convert.ToInt32(ddlBook.SelectedValue);
+            IssueBookService service= new IssueBookService();
+            result= service.BookIssueToStudent(BookId);
+            return result;
+        }
         private void GetAllBranch()
         {
             List<BranchModel> lstBranch = new List<BranchModel>();
