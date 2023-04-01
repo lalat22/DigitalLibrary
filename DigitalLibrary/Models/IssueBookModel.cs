@@ -9,5 +9,10 @@ namespace DigitalLibrary.Models
     {
         public string SelectPublication { get; set; }
         public string SelectBook { get; set; }
+        public string BookName { get; set; }
+        public int StudentId { get; set; }
+        public int Days { get; set; }
+        public DateTime IssueDate { get; set; }
+
     }
 }

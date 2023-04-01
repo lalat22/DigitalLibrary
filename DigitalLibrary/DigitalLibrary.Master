@@ -167,11 +167,11 @@
                     <i class="fa fa-book" aria-hidden="true"></i>
                     Issue Book
                 </a>
-                  <a href="javascript:void(0)" style="font-size: 20px">
+                  <a href="IssueReport.aspx" style="font-size: 20px">
                      <i class="fa fa-file" aria-hidden="true"></i>
                     Issue Report
                 </a>
-                  <a href="javascript:void(0)" style="font-size: 20px">
+                  <a href="ReturnBook.aspx" style="font-size: 20px">
                     <i class="fa fa-retweet" aria-hidden="true"></i>
                     Return Book
                 </a>
