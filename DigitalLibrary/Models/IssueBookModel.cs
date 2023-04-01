@@ -12,5 +12,7 @@ namespace DigitalLibrary.Models
         public string BookName { get; set; }
         public int StudentId { get; set; }
         public int Days { get; set; }
+        public DateTime IssueDate { get; set; }
+
     }
 }

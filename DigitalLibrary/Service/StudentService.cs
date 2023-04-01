@@ -134,7 +134,7 @@ namespace DigitalLibrary.Service
         }
         #endregion
 
-        #region GetBookDetailsById
+        #region GetStudentsDetailsById
         public StudentModel GetStudentsDetailsById(int studentId)
         {
             StudentModel studentModel1 = null;

@@ -232,5 +232,101 @@ namespace DigitalLibrary.Service
         }
 
         #endregion
+
+
+        #region GetRentBookbyStudent
+        public List<IssueBookModel> GetRentBookbyStudent(int studentId, string bookName)
+        {
+            List<IssueBookModel> lstIssueBookModel = null;
+            IssueBookModel obj = null;
+            try
+            {
+                CreateConnection();
+                OpenConnection();
+                _sqlCommand.CommandText = "GetRentBookbyStudent";
+                _sqlCommand.CommandType = CommandType.StoredProcedure;
+                _sqlCommand.Parameters.AddWithValue("@StudentId", studentId);
+                _sqlCommand.Parameters.AddWithValue("@BookName", bookName);
+                _sqlDataAdapter = new SqlDataAdapter(_sqlCommand);
+
+                _dtSet = new DataSet();
+                _sqlDataAdapter.Fill(_dtSet);
+                DataTable dt = new DataTable();
+                dt = _dtSet.Tables[0];
+
+                if (dt.Rows.Count > 0)
+                {
+                    lstIssueBookModel = new List<IssueBookModel>();
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        obj = new IssueBookModel();
+                        obj.StudentId = Convert.ToInt32(dt.Rows[i]["StudentId"]);
+                        obj.BookName = dt.Rows[i]["BookName"].ToString();
+
+                        lstIssueBookModel.Add(obj);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+            finally
+            {
+                CloseConnection();
+                DisposeConnection();
+                obj = null;
+            }
+            return lstIssueBookModel;
+        }
+        #endregion
+
+        #region GetIssuedBookCountbyStudent
+        public List<IssueBookModel> GetIssuedBookCountbyStudent(int studentId)
+        {
+            List<IssueBookModel> lstIssueBookModel = null;
+            IssueBookModel obj = null;
+            try
+            {
+                CreateConnection();
+                OpenConnection();
+                _sqlCommand.CommandText = "GetIssuedBookCountbyStudent";
+                _sqlCommand.CommandType = CommandType.StoredProcedure;
+                _sqlCommand.Parameters.AddWithValue("@StudentId", studentId);
+                _sqlDataAdapter = new SqlDataAdapter(_sqlCommand);
+                _dtSet = new DataSet();
+                _sqlDataAdapter.Fill(_dtSet);
+                DataTable dt = new DataTable();
+                dt = _dtSet.Tables[0];
+
+                if (dt.Rows.Count > 0)
+                {
+                    lstIssueBookModel = new List<IssueBookModel>();
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        obj = new IssueBookModel();
+                        obj.StudentId = Convert.ToInt32(dt.Rows[i]["StudentId"]);
+
+                        lstIssueBookModel.Add(obj);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+            finally
+            {
+                CloseConnection();
+                DisposeConnection();
+                obj = null;
+            }
+            return lstIssueBookModel;
+        }
+        #endregion
     }
 }

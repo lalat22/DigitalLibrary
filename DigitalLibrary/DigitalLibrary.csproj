@@ -145,7 +145,9 @@
     <Content Include="Images\Logout.png" />
     <Content Include="Images\undo.png" />
     <Content Include="IssueBook.aspx" />
+    <Content Include="IssueReport.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="ReturnBook.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -266,6 +268,13 @@
     <Compile Include="IssueBook.aspx.designer.cs">
       <DependentUpon>IssueBook.aspx</DependentUpon>
     </Compile>
+    <Compile Include="IssueReport.aspx.cs">
+      <DependentUpon>IssueReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IssueReport.aspx.designer.cs">
+      <DependentUpon>IssueReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -277,14 +286,24 @@
     <Compile Include="Models\BranchModel.cs" />
     <Compile Include="Models\IssueBookModel.cs" />
     <Compile Include="Models\PublicationModel.cs" />
+    <Compile Include="Models\ReturnBookModel.cs" />
     <Compile Include="Models\StudentModel.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReturnBook.aspx.cs">
+      <DependentUpon>ReturnBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReturnBook.aspx.designer.cs">
+      <DependentUpon>ReturnBook.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Service\BookService.cs" />
     <Compile Include="Service\IssueBookService.cs" />
+    <Compile Include="Service\IssueReportService.cs" />
     <Compile Include="Service\IUserService.cs" />
     <Compile Include="Service\BranchService.cs" />
     <Compile Include="Service\PublicationService.cs" />
+    <Compile Include="Service\ReturnBookService.cs" />
     <Compile Include="Service\StudentService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Site.Master.cs">

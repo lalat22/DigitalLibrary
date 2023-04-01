@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.XPath;
+using System.Configuration;
 
 namespace DigitalLibrary
 {
@@ -111,6 +112,7 @@ namespace DigitalLibrary
 
         protected void btnBookIssue_Click(object sender, EventArgs e)
         {
+            IssueBookService issueBookService = new IssueBookService();
             try
             {
                 if (string.IsNullOrEmpty(txtDay.Text))
@@ -127,15 +129,42 @@ namespace DigitalLibrary
                     }
                     else
                     {
-                        int i = InsertIssueBookDetails();
-                        int j = BookIssueToStudent();
-                        if (j > 0)
+                        int studentId = Convert.ToInt32(ddlStudent.SelectedValue);
+                        string bookName = ddlBook.SelectedItem.Text;
+                        List<IssueBookModel> lst = issueBookService.GetRentBookbyStudent(studentId,bookName);
+                        if(lst!=null)
                         {
-                            lblmsg.Text = "Book issued to " + ddlStudent.SelectedItem.Text;
+                            if (lst.Count >= 1)
+                            {
+                                lblmsg.Text = "Same book alredy issued to : " + ddlStudent.SelectedItem.Text;
+                            }
                         }
-                        int BookId = Convert.ToInt32(ddlBook.SelectedValue);
-                        GetBookDetailById(BookId);
+                        else
+                        {
+                            int bookLimits = Convert.ToInt32(ConfigurationManager.AppSettings["BookLimits"]);
+                            int studentid = Convert.ToInt32(ddlStudent.SelectedValue);
+                            List<IssueBookModel> lstBookCount = issueBookService.GetIssuedBookCountbyStudent(studentid);
+                            if(lstBookCount.Count>= bookLimits)
+                            {
+                                lblmsg.Text = "A student can issue maximum "+ bookLimits + " books !!";
+                            }
+                            else
+                            {
+                                int i = InsertIssueBookDetails();
+                                int j = BookIssueToStudent();
+                                if (j > 0)
+                                {
+                                    lblmsg.Text = "Book issued to " + ddlStudent.SelectedItem.Text;
+                                }
+                                int BookId = Convert.ToInt32(ddlBook.SelectedValue);
+                                GetBookDetailById(BookId);
+                                clearData();
+                            }
+                            
+                        }
+                        
                     }
+                    
                 }
             }
             catch (Exception ex)
@@ -157,6 +186,13 @@ namespace DigitalLibrary
 
 
             return result;
+        }
+
+        private void clearData()
+        {
+            ddlBranch.SelectedIndex = 0;
+            ddlStudent.SelectedIndex = 0;
+            txtDay.Text= string.Empty;
         }
 
         private int BookIssueToStudent()
@@ -191,7 +227,7 @@ namespace DigitalLibrary
         {
             if (ddlBranch.SelectedIndex > 0)
             {
-                dvIssueBook.Visible = false;
+                dvIssueBook.Visible = true;
                 string str = ddlBranch.SelectedItem.Text;
                 GetStudentByBranch(str);
 

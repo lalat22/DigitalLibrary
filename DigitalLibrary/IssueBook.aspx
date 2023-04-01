@@ -17,7 +17,7 @@
     <div class="card text-center" style="width: 95%; margin-left: -75px;">
         <div class="card-header" style="background-color: #0b3355;">
 
-            <h6 style="color: ghostwhite;"><b>Welcome to Digital Library System</b></h6>
+            <h6 style="color: ghostwhite;"><b>Issue Book</b></h6>
         </div>
         <div class="card-body" style="background-color: rgb(145, 209, 208); overflow-y: scroll; overflow-x: hidden; height: 440px">
 
